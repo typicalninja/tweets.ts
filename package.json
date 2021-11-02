@@ -1,6 +1,6 @@
 {
   "name": "tweets.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A easy to use twitter api client written in typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@sapphire/async-queue": "^1.1.7",
     "axios": "^0.23.0",
-    "crypto": "^1.0.1",
+    "tslib": "^2.3.1",
     "lodash.isempty": "^4.4.0",
     "oauth-1.0a": "^2.2.6"
   },
@@ -31,7 +31,6 @@
     "@types/node": "^16.11.6",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "tslib": "^2.3.1",
     "typedoc": "^0.22.7"
   }
 }

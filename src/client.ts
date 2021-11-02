@@ -1,4 +1,4 @@
-import merge from "ts-deepmerge";
+import { merge }from "./util/merge";
 import { Media, User, Tweet, objectValidation } from "..";
 import rest from "./rest/rest";
 import { chunkBuffer, mergeBody } from "./util/basic";
@@ -64,7 +64,7 @@ class Client {
 	 _rest: rest;
 	version: string;
 	constructor(options: ClientOptions) {
-		this.options = merge(defaultOptions, options)
+		this.options = merge(options, defaultOptions)
 		this.auth = this.options.authorization;
 		this.oauthClient = getOAuthClient(this.options.authorization.consumer_key, this.options.authorization.consumer_secret);
 		this.oauthUserData = {

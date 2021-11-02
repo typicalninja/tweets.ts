@@ -20,17 +20,15 @@
   "dependencies": {
     "@sapphire/async-queue": "^1.1.7",
     "axios": "^0.23.0",
-    "chai-as-promised": "^7.1.1",
     "crypto": "^1.0.1",
     "lodash.isempty": "^4.4.0",
-    "oauth-1.0a": "^2.2.6",
-    "ts-deepmerge": "^1.1.0"
+    "oauth-1.0a": "^2.2.6"
   },
   "devDependencies": {
     "@types/lodash.isempty": "^4.4.6",
     "@types/node": "^16.11.6",
     "chai": "^4.3.4",
-    "jsdoc-skyceil": "^2.0.0",
+    "chai-as-promised": "^7.1.1",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.7"
   }

@@ -191,6 +191,32 @@ setTimeout(() => {
 }, 10000)
 ```
 
+
+## Using the raw Api
+
+> Raw api is querying the api using builtin methods like post(), get(), you completely controls these methods. so least support is given for usage of this 
+
+> client is a instance of tweet.ts client
+### Get
+```typescript
+// returns a promise, must be inside a async function, unless you use .then
+
+const request = await client.get({ endPoint: '/endPoint/here/:id', bodyOrParams: { id: 'this will be in the endpoint param', someOtherParam: 'follow' } })
+
+// raw json data
+console.log(request);
+```
+
+### Post
+```typescript
+// returns a promise, must be inside a async function, unless you use .then
+
+const request = await client.post({ endPoint: '/endPoint/here/to/post/:id', bodyOrParams: { id: 'this will be in the endpoint param', someOtherBody: 'this will be in the body' } })
+
+// raw json data
+console.log(request);
+```
+
 ## FAQ
 
 * How Do i get Authorization credential's

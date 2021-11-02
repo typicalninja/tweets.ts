@@ -1,0 +1,38 @@
+{
+  "name": "tweets.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "mocha",
+    "docs:build": "jsdoc ./dist/src/client.js ./dist/src/streamClient.js ./dist/src/structures/tweet.js ./dist/src/structures/user.js ./dist/src/structures/media.js --readme ./README.md -t node_modules/jsdoc-skyceil -d ./docs"
+  },
+  "keywords": [
+    "twitter",
+    "twitter-api",
+    "twitter-stream",
+    "twitter-client",
+    "twitter client",
+    "twitter streams"
+  ],
+  "author": "typicalninja493",
+  "license": "ISC",
+  "dependencies": {
+    "@sapphire/async-queue": "^1.1.7",
+    "axios": "^0.23.0",
+    "chai-as-promised": "^7.1.1",
+    "crypto": "^1.0.1",
+    "lodash.isempty": "^4.4.0",
+    "oauth-1.0a": "^2.2.6",
+    "ts-deepmerge": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash.isempty": "^4.4.6",
+    "@types/node": "^16.11.6",
+    "chai": "^4.3.4",
+    "jsdoc-skyceil": "^2.0.0",
+    "tslib": "^2.3.1",
+    "typedoc": "^0.22.7"
+  }
+}

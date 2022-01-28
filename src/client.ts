@@ -64,7 +64,7 @@ class Client {
 	 _rest: rest;
 	version: string;
 	constructor(options: ClientOptions) {
-		this.options = merge(options, defaultOptions)
+		this.options = merge(defaultOptions, options)
 		this.auth = this.options.authorization;
 		this.oauthClient = getOAuthClient(this.options.authorization.consumer_key, this.options.authorization.consumer_secret);
 		this.oauthUserData = {
@@ -178,6 +178,23 @@ class Client {
 				})
 		});
 	}
+	getTweets(tweetIds = [], options = { params: {} }) {
+		if(!Array.isArray(tweetIds)) throw new Error('TweetIds must be a Array');
+		const joinedArray = tweetIds.join(",");
+		const params = mergeBody({
+			id: joinedArray,
+		}, options.params);
+		return new Promise((resolve, reject) => {
+			this.get({ endPoint: '/statuses/lookup', bodyOrParams: params }).then(r => {
+				if(r.length <= 0) resolve([]);
+				const tweets = [];
+				for(const tweet of r) {
+					tweets.push(new Tweet(this, tweet))
+				}
+				resolve(tweets)
+			}).catch(reject)
+		})
+	}
 	/**
 	 * Tweet a message
 	 * @param status - Message to Tweet
@@ -243,7 +260,7 @@ class Client {
 		return new Promise((resolve, reject) => {
 			// our parser will replace :tweetID with one in bodyOrParams, for dynamic urls, use this method, or it will create a request bucket for that
 			this.post({ endPoint: '/statuses/retweet/:tweetID', bodyOrParams: { tweetID: tweetID } }).then((apiData) => {
-				return resolve(new Tweet(this, apiData));
+				resolve(new Tweet(this, apiData));
 			}).catch(reject);
 		});
 	}
@@ -291,12 +308,12 @@ class Client {
 		else Object.defineProperty(parameters, 'user_id',  { value: user, configurable: true, writable: false, enumerable: true });
 		return new Promise((resolve, reject) => {
 			this.post({ endPoint: '/friendships/destroy', bodyOrParams: parameters }).then(r => {
-				resolve(new User(this, r))
+				return resolve(new User(this, r));
 			}).catch(reject);
 		});
 	}
-
-	async tweetMedia(media: Media | string | Buffer) {
+	// not ready to release
+	private async tweetMedia(media: Media | string | Buffer) {
 		let attachment;
 		// if its a Media Class, just convert it to json
 		if(media instanceof Media) {

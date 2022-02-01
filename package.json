@@ -1,6 +1,6 @@
 {
   "name": "tweets.ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A easy to use twitter api client written in typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

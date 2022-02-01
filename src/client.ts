@@ -173,7 +173,11 @@ class Client {
 				})
 		});
 	}
-	getTweets(tweetIds = [], options = { params: {} }) {
+	/**
+	 * Get multiple tweets
+	 * @param tweetIds - Array of tweet ids to get
+	 */
+	getTweets(tweetIds = [], options = { params: {} }): Promise<Tweet[]> {
 		if(!Array.isArray(tweetIds)) throw new Error('TweetIds must be a Array');
 		const joinedArray = tweetIds.join(",");
 		const params = mergeBody({

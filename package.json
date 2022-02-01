@@ -2,8 +2,8 @@
   "name": "tweets.ts",
   "version": "1.0.3",
   "description": "A easy to use twitter api client written in typescript",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "typicalninja493/tweets.ts",
   "homepage": "http://tweets.axix.cf/",
   "scripts": {

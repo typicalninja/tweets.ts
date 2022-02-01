@@ -8,13 +8,8 @@ import { percentEncode } from "./util/basic";
 
 const END = "\r\n";
 
-let EventEmitter;
-// optional package eventemitter3
-try {
-  EventEmitter = require("eventemitter3");
-} catch {
-  EventEmitter = require("events");
-}
+let EventEmitter = require("events");
+
 
 const fillClient = (self: any, clientOrOptions: Client | { version: string | number, authorization: { consumer_key: string | null; consumer_secret: string | null; access_token: string | null; access_token_secret: string | null; } & { consumer_key: string | null; consumer_secret: string | null; access_token: string | null; access_token_secret: string | null; } }) => {
 	if(clientOrOptions instanceof Client) {

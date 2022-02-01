@@ -3,7 +3,7 @@ import Client from '../client';
 import { imageUploadEndpoints, RequestMethods } from '../util/constants';
 import requestBucket from './bucket';
 import getRequester from './request';
-
+import { requestOptions } from '../client'
 class rest {
 	 _client: Client;
 	private _rest: AxiosInstance;
@@ -16,7 +16,7 @@ class rest {
 		this._baseUrl = _r.baseUrl;
 		this.buckets = new Map();
 	}
-	async _request({ endPoint = '', method = RequestMethods.GET, bodyOrParams = {}, timeOut = 15000 }): Promise<any> {
+	async _request({ endPoint = '', method = RequestMethods.GET, bodyOrParams = {}, timeOut = 15000 }: requestOptions): Promise<any> {
 		const requestHash = `${endPoint}:[${method}]`
 		if(this.buckets.has(requestHash)) {
 			this._debug(`Request Bucket found for hash ${requestHash}, queuing request to endpoint ${endPoint}, Total buckets: ${this.buckets.size}`)

@@ -25,16 +25,12 @@ interface ClientOptions {
 /**
  * Request Options for axios client
  */
-interface requestOptions {
-	endPoint: string,
-	method: string,
-	timeOut: number | null
-}
 
-interface requestValues {
-	endPoint: string,
-	bodyOrParams: {}
-	timeOut: number | null
+export interface requestOptions {
+	method?: string; 
+	endPoint: string; 
+	bodyOrParams: {}; 
+	timeOut?: number;
 }
 
 /**
@@ -75,8 +71,7 @@ class Client {
 		this._rest = new rest(this)
 		this.version = this.options.api.version == '1.1' ? '1' : '2';
 	}
-	private _request(obj: requestOptions | {}) {
-		// @ts-ignore
+	private _request(obj: requestOptions) {
 		return this._rest._request(obj);
 	}
 	/**
@@ -89,7 +84,7 @@ class Client {
 	 * bot.get({ endPoint: '/followers/list', bodyOrParams: { screen_name: 'typicalninja' } }).then(console.log).catch(console.log);
 	 * ```
 	 */
-	get(obj: requestValues | {}): Promise<any> {
+	get(obj: requestOptions): Promise<any> {
 		return this._request({ method: RequestMethods.GET, ...obj })
 	}
 	/**
@@ -102,7 +97,7 @@ class Client {
 	 * bot.post({ endPoint: '/statuses/update', bodyOrParams: { status: 'Tweets.js is the best library' } }).then(console.log).catch(console.log);
 	 * ```
 	 */
-	post(obj: requestValues | {}) {
+	post(obj: requestOptions) {
 		return this._request({ method: RequestMethods.POST, ...obj })
 	}
 	/**

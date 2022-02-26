@@ -176,13 +176,14 @@ class Client {
 	/**
 	 * Get multiple tweets
 	 * @param tweetIds - Array of tweet ids to get
+	 * @param parameters - custom parameters for this GET Request
 	 */
-	getTweets(tweetIds = [], options = { params: {} }): Promise<Tweet[]> {
+	getTweets(tweetIds = [], parameters: {}): Promise<Tweet[]> {
 		if(!Array.isArray(tweetIds)) throw new Error('TweetIds must be a Array');
 		const joinedArray = tweetIds.join(",");
 		const params = mergeBody({
 			id: joinedArray,
-		}, options.params);
+		}, parameters);
 		return new Promise((resolve, reject) => {
 			this.get({ endPoint: '/statuses/lookup', bodyOrParams: params }).then(r => {
 				if(r.length <= 0) resolve([]);
@@ -197,8 +198,7 @@ class Client {
 	/**
 	 * Tweet a message
 	 * @param status - Message to Tweet
-	 * @param options - Options for tweet method
-	 * @param options.body - custom body for the request
+	 * @param body - custom body for this POST request
 	 * @returns A tweet, containing all the usual tweet functions
 	 * @example
 	 * ```typescript
@@ -206,13 +206,13 @@ class Client {
 	 * bot.tweet('hey, this is a tweet from tweets.js')
 	 * ```
 	 */
-	tweet(status: string, options = { body: {} }): Promise<Tweet> {
+	tweet(status: string, mbody: {}): Promise<Tweet> {
 		if(typeof status !== 'string') throw new Error('Status is A Required value that needs to be a string')
-		if(options && typeof options !== 'object') throw new Error(`Options must be a object, received: ${typeof options}`)
+		if(mbody && typeof mbody !== 'object') throw new Error('body must be a object');
 		// since there are lots of body parameters for this route, we let the user decide the body
 		const body = mergeBody({
 			status: status,
-		}, options.body);
+		}, mbody);
 		return new Promise((resolve, reject) => {
 			this.post({ bodyOrParams: body, endPoint: '/statuses/update' }).then((apiData) => {
 				resolve(new Tweet(this, apiData))
@@ -224,7 +224,7 @@ class Client {
 	 * Reply to a tweet
 	 * @param tweetID - Id of the tweet to reply to
 	 * @param reply - Message to Reply with
-	 * @param options - Options for tweet method (passes to tweet())
+	 * @param body - custom body for this POST request
 	 * @returns A tweet, containing all the usual tweet functions
 	 * @example
 	 * ```typescript
@@ -232,12 +232,12 @@ class Client {
 	 * bot.reply('12232455799', 'Hey have you used tweets.js?')
 	 * ```
 	 */
-	reply(tweetID: string, reply: string, options = { body: {} }): Promise<Tweet> {
+	reply(tweetID: string, reply: string, mbody: {}): Promise<Tweet> {
 		const bd = {
 			in_reply_to_status_id: tweetID,
 			auto_populate_reply_metadata: true,
 		}
-		const body = mergeBody(bd, options.body)
+		const body = mergeBody(bd, mbody)
 
 		return this.tweet(reply, {
 			body: body,
@@ -310,6 +310,27 @@ class Client {
 				return resolve(new User(this, r));
 			}).catch(reject);
 		});
+	}
+	/**
+	 * Search multiple users 
+	 * @param query - query to search for
+	 * @example
+	 * ```typescript
+	 * bot.searchUsers('soccer', { count: 20,  }).then(console.log).catch(console.log)
+	 * ```
+	 */
+	searchUsers(query: string, parameters: { } = {}): Promise<User[]> {
+		if(!query || typeof query !== 'string') throw new Error('Query is required and must be a string');
+		if(parameters && typeof parameters !== 'object') throw new Error('Parameters must be an object');
+		const params = mergeBody({
+			q: query,
+		}, parameters);
+
+		return new Promise((resolve, reject) => {
+			this.get({ endPoint: '/users/search', bodyOrParams: params }).then((r: []) => {
+				resolve(r.map((user: any) => new User(this, user)))
+			}).catch(reject);
+		})
 	}
 	// not ready to release
 	private async tweetMedia(media: Media | string | Buffer) {

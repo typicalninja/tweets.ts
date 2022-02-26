@@ -2,8 +2,8 @@
   "name": "tweets.ts",
   "version": "1.0.4",
   "description": "A easy to use twitter api client written in typescript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "repository": "typicalninja493/tweets.ts",
   "homepage": "http://tweets.axix.cf/",
   "scripts": {
@@ -18,7 +18,7 @@
     "twitter streams"
   ],
   "author": "typicalninja493",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@sapphire/async-queue": "^1.1.7",
     "axios": "^0.23.0",

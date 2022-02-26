@@ -231,6 +231,10 @@ console.log(request);
 
 > You can use our Discord server to get support, join [here](https://discord.com/invite/HVnGtzMaW4)
 
+## License
+
+This repository and the code inside it is licensed under the MIT License. Read [LICENSE](https://github.com/typicalninja493/tweets.ts/blob/master/LICENSE) for more information.
+
 ## Author
 
 👤 **typicalninja21**

@@ -48,13 +48,13 @@ class Tweet {
 	/**
 	 * Reply to this tweet
 	 * @param message - Message to be tweeted
-	 * @param options - Options to be passed to reply()
+	 * @param body - custom body for this request
 	 * @returns 
 	 */
-	reply(message: string, options: { body: {} } = { body: {} }) {
+	reply(message: string, body: {}) {
 		if(!message || typeof message !== 'string') throw new Error('Message must be a string');
-		if(options && typeof options !== 'object') throw new Error('Options must be a object');
-		return this.client.reply(this.id, message, options)
+		if(body && typeof body !== 'object') throw new Error('body must be a object');
+		return this.client.reply(this.id, message, body)
 	}
 	/**
 	 * Retweet this tweet

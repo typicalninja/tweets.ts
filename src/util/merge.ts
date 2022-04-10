@@ -1,10 +1,12 @@
+import _merge from 'lodash.merge';
+
 export const isObject = (object: {} | any) => {
 	return !!object && typeof object === 'object';
 }
 
-export const merge = (target: any, source: any) => {
+/*export const merge = (target: any, source: any) => {
 	if (!isObject(target) || !isObject(source)) {
-	  return source;
+	  return null;
 	}
   
 	Object.keys(source).forEach(key => {
@@ -21,4 +23,7 @@ export const merge = (target: any, source: any) => {
 	});
   
 	return target;
-  }
+  }*/
+
+// export merge instead from lodash.merge
+export { _merge as merge };

@@ -1,14 +1,14 @@
-export const mergeBody = (body: {}, body_1: any) => {
+/*export const mergeBody = (body: {}, body_1: any) => {
 	if(typeof body_1 == 'object') {
 		const objectKeys = Object.keys(body_1);
 		const newBody = {...body};
 		for(const key of objectKeys) {
-			Object.defineProperty(newBody, key, body_1[key])
+			Object.defineProperty(newBody, key, { value: body_1[key], writable: true, enumerable: true, configurable: true });
 		}
 		return newBody;
 	}
 	return body;
-};
+};*/
 
 
 export const percentEncode = (string: string) => {

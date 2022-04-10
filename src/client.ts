@@ -1,7 +1,7 @@
 import { merge }from "./util/merge";
 import { Media, User, Tweet, objectValidation } from "..";
 import rest from "./rest/rest";
-import { chunkBuffer, mergeBody } from "./util/basic";
+import { chunkBuffer } from "./util/basic";
 import { defaultOptions, RequestMethods } from "./util/constants";
 import getOAuthClient from "./util/oauthClient";
 
@@ -178,10 +178,10 @@ class Client {
 	 * @param tweetIds - Array of tweet ids to get
 	 * @param parameters - custom parameters for this GET Request
 	 */
-	getTweets(tweetIds = [], parameters: {}): Promise<Tweet[]> {
+	getTweets(tweetIds = [], parameters: {} = {}): Promise<Tweet[]> {
 		if(!Array.isArray(tweetIds)) throw new Error('TweetIds must be a Array');
 		const joinedArray = tweetIds.join(",");
-		const params = mergeBody({
+		const params = merge({
 			id: joinedArray,
 		}, parameters);
 		return new Promise((resolve, reject) => {
@@ -206,11 +206,11 @@ class Client {
 	 * bot.tweet('hey, this is a tweet from tweets.js')
 	 * ```
 	 */
-	tweet(status: string, mbody: {}): Promise<Tweet> {
+	tweet(status: string, mbody: {} = {}): Promise<Tweet> {
 		if(typeof status !== 'string') throw new Error('Status is A Required value that needs to be a string')
 		if(mbody && typeof mbody !== 'object') throw new Error('body must be a object');
 		// since there are lots of body parameters for this route, we let the user decide the body
-		const body = mergeBody({
+		const body = merge({
 			status: status,
 		}, mbody);
 		return new Promise((resolve, reject) => {
@@ -232,12 +232,12 @@ class Client {
 	 * bot.reply('12232455799', 'Hey have you used tweets.js?')
 	 * ```
 	 */
-	reply(tweetID: string, reply: string, mbody: {}): Promise<Tweet> {
+	reply(tweetID: string, reply: string, mbody: {} = {}): Promise<Tweet> {
 		const bd = {
 			in_reply_to_status_id: tweetID,
 			auto_populate_reply_metadata: true,
 		}
-		const body = mergeBody(bd, mbody)
+		const body = merge(bd, mbody)
 
 		return this.tweet(reply, {
 			body: body,
@@ -322,7 +322,7 @@ class Client {
 	searchUsers(query: string, parameters: { } = {}): Promise<User[]> {
 		if(!query || typeof query !== 'string') throw new Error('Query is required and must be a string');
 		if(parameters && typeof parameters !== 'object') throw new Error('Parameters must be an object');
-		const params = mergeBody({
+		const params = merge({
 			q: query,
 		}, parameters);
 

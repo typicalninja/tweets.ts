@@ -133,6 +133,7 @@ class requestBucket {
 									this.rateLimit.limited = false;
 									this.queue.shift();
 								}, parseInt(err.response?.headers['X-Rate-Limit-Reset']) * 1000)
+								
 								if(stopped) return;
 								else reject(`Rate Limited, :: ${util.inspect(err?.response?.headers)}`)
 							}

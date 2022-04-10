@@ -22,12 +22,14 @@
   "dependencies": {
     "@sapphire/async-queue": "^1.1.7",
     "axios": "^0.23.0",
-    "tslib": "^2.3.1",
     "lodash.isempty": "^4.4.0",
-    "oauth-1.0a": "^2.2.6"
+    "lodash.merge": "^4.6.2",
+    "oauth-1.0a": "^2.2.6",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@types/lodash.isempty": "^4.4.6",
+    "@types/lodash.merge": "^4.6.6",
     "@types/node": "^16.11.6",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",

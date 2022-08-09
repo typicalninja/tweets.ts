@@ -15,7 +15,11 @@
     "twitter-stream",
     "twitter-client",
     "twitter client",
-    "twitter streams"
+    "twitter streams",
+    "tweets.ts",
+    "tweets.js",
+    "tweet",
+    "twitter api"
   ],
   "author": "typicalninja493",
   "license": "MIT",
@@ -34,5 +38,8 @@
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "typedoc": "^0.22.7"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

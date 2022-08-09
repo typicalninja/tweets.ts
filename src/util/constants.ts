@@ -1,6 +1,6 @@
 const pkg = require('../../../package.json')
 
-// default UserAgent for api requests
+// default UserAgent for api requests (can be overwritten in options)
 export const userAgent = `tweets.ts/${pkg.version} (https://github.com/typicalninja493/tweets.ts) Node.js/${process.version}  Axios/${pkg.dependencies['axios'].replace('^', '')}`;
 
 export const streamUrl = `https://stream.twitter.com/#{version}`

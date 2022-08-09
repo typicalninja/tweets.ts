@@ -225,11 +225,15 @@ console.log(request);
 
 * How can i use bearer token (app authentication)
 
-> Sadly you cant, in typescript rewrite (tweets.ts) App authentication support was removed, You can use another library like this one for app authentication purpose
+> Sadly you cant, in typescript rewrite (tweets.ts) App authentication support was removed, You can use another library like [this one](https://www.npmjs.com/package/twitter) for app authentication purpose
 
 * Where can i get support?
 
 > You can use our Discord server to get support, join [here](https://discord.com/invite/HVnGtzMaW4)
+
+> Or you can use our github issue tracker, [here](https://github.com/typicalninja493/tweets.ts/issues)
+
+**Due to me (typicalninja) Not being available A Github Issue is more convenient if you need support**
 
 ## License
 

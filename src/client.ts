@@ -193,7 +193,7 @@ class Client {
 				}
 				resolve(tweets)
 			}).catch(reject)
-		})
+		});
 	}
 	/**
 	 * Tweet a message
@@ -370,6 +370,7 @@ class Client {
 		while (sentBytes < totalBytes) {
 			const chunk = buffers[segMentId] as Buffer
 			if(chunk) {
+
 				const chunkBinary = chunk.toString('binary')
 				sentBytes += Buffer.byteLength(chunkBinary);
 				 console.log(`SegmentID: ${segMentId}; SentBytes/total-bytes: ${sentBytes}-B/${totalBytes}-B; ${chunk.length}`)

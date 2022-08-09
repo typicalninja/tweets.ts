@@ -25,10 +25,4 @@ export const objectValidation = (object: any, keys: any) => {
 	}
 	return true;
 }
-/*
-	if(object[key]) {
-	if(typeof object[key] !== keys[key] && typeof object[key] !== typeof keys[key]) throw new Error(`Expected Key ${key} Of value ${util.inspect(object[key])} to be of Type of ${util.inspect(typeof keys[key] == 'string' ? keys[key] : typeof keys[key])} received ${typeof object[key]}`)
-	if(typeof keys[key] == 'object') {
-		objectValidation(object[key], keys[key])
-	}
-*/
+

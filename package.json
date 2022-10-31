@@ -7,7 +7,8 @@
   "repository": "typicalninja493/tweets.ts",
   "homepage": "http://tweets.axix.cf/",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "docs:build": "typedoc src/index.ts"
   },
   "keywords": [
     "twitter",
@@ -21,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@sapphire/async-queue": "^1.1.7",
-    "axios": "^0.23.0",
+    "axios": "^1.1.3",
     "lodash.isempty": "^4.4.0",
     "lodash.merge": "^4.6.2",
     "oauth-1.0a": "^2.2.6",

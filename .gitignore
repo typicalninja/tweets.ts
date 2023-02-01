@@ -3,6 +3,10 @@ test/
 
 node_modules/
 
+.yarn
+.vscode
+
+
 
 # monorepo
 .turbo

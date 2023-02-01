@@ -1,0 +1,5 @@
+{
+    "name": "@tweetsts/rest",
+    "description": "A Easy to use Rest api client for twitter",
+    "version": "1.0.0"
+}

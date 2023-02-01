@@ -1,0 +1,8 @@
+dist/
+test/
+
+node_modules/
+
+
+# monorepo
+.turbo

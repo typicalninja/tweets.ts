@@ -1,13 +1,11 @@
 {
-  "name": "tweets.ts",
-  "version": "1.0.4",
-  "description": "A easy to use twitter api client written in typescript",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "repository": "typicalninja493/tweets.ts",
-  "homepage": "http://tweets.axix.cf/",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "test": "mocha",
+    "test": "mocha -r ts-node/register tests/**/*.ts",
     "docs:build": "typedoc src/index.ts"
   },
   "keywords": [
@@ -20,20 +18,8 @@
   ],
   "author": "typicalninja493",
   "license": "MIT",
-  "dependencies": {
-    "@sapphire/async-queue": "^1.1.7",
-    "axios": "^1.1.3",
-    "lodash.isempty": "^4.4.0",
-    "lodash.merge": "^4.6.2",
-    "oauth-1.0a": "^2.2.6",
-    "tslib": "^2.3.1"
+  "engines": {
+    "node": ">=14.0.0"
   },
-  "devDependencies": {
-    "@types/lodash.isempty": "^4.4.6",
-    "@types/lodash.merge": "^4.6.6",
-    "@types/node": "^16.11.6",
-    "chai": "^4.3.4",
-    "chai-as-promised": "^7.1.1",
-    "typedoc": "^0.22.7"
-  }
+  "packageManager": "yarn@3.3.0"
 }

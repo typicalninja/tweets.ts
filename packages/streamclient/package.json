@@ -1,0 +1,5 @@
+{
+    "name": "@tweetsts/streamclient",
+    "description": "Stream Client for twitter api",
+    "version": "1.0.0"
+}

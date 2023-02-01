@@ -5,21 +5,18 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "mocha -r ts-node/register tests/**/*.ts",
-    "docs:build": "typedoc src/index.ts"
+    "build": "turb run build",
+    "build:docs": "turbo run build --filter=@tweetsts/docs",
+    "dev": "turbo run dev --parallel",
+    "dev:docs": "turbo run dev --filter=@tweetsts/docs"
   },
-  "keywords": [
-    "twitter",
-    "twitter-api",
-    "twitter-stream",
-    "twitter-client",
-    "twitter client",
-    "twitter streams"
-  ],
   "author": "typicalninja493",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "devDependencies": {
+    "turbo": "^1.7.1"
+  }
 }

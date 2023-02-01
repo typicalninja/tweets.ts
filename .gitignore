@@ -6,6 +6,13 @@ node_modules/
 .yarn
 .vscode
 
+.npmignore
+
+# Docs
+apps/docs/build
+# Generated files
+apps/docs/.docusaurus
+apps/docs/.cache-loader
 
 
 # monorepo

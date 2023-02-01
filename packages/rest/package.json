@@ -1,5 +1,12 @@
 {
     "name": "@tweetsts/rest",
     "description": "A Easy to use Rest api client for twitter",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "keywords": [
+        "twitter",
+        "twitter-api",
+        "rest"
+    ],
+    "author": "typicalninja493",
+    "license": "MIT"
 }

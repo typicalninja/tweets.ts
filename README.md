@@ -1,3 +1,8 @@
+
+# Deprecated
+
+[Read](https://github.com/typicalninja493/tweets.ts/issues/4)
+
 <h1 align="center">Welcome to tweets.ts 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.2-blue.svg?cacheSeconds=2592000" />
